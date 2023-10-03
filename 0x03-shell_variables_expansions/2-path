@@ -1,2 +1,2 @@
 #!/bin/bash
-echo -e $PATH/action'\n'
+echo $PATH/action
