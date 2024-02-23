@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 #Bash script that displays messages when read some signals
 
+terminate() {
+  rm /var/run/myscript.pid
+  exit
+}
+
 echo "$$" > /var/run/myscript.pid
 
 while true
@@ -9,5 +14,5 @@ do
 	sleep 2
 	trap 'echo "Y U no love me?!"' SIGINT
 	trap 'echo "I hate the kill command" && terminator' SIGTERM
-	trap 'rm /var/run/myscript.pid; exit' SIGQUIT
+	trap 'terminate' SIGQUIT
 done
